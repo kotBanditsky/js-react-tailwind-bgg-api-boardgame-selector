@@ -11,7 +11,11 @@ const Content = () => {
     }
 
     const onSearch = () => {
-        apiGet(`${input}?own=1`).then(result => {
+        // apiGet(`${input}?own=1`).then(result => {
+        //     setResuts(result);
+        // });
+
+        apiGet(input).then(result => {
             setResuts(result);
         });
 
