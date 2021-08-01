@@ -1,13 +1,13 @@
 import Content from './components/Content';
-import Hero from './components/Hero';
+import Footer from './components/Footer';
 import Navbar from './components/Navbar';
 
 function App() {
   return (
     <>
       <Navbar />
-      <Hero />
       <Content />
+      <Footer />
     </>
   );
 }
