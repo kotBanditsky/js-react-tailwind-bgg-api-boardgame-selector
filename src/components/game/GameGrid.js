@@ -10,12 +10,15 @@ const GameGrid = ( {data} ) => {
                                 key={data.objectid}
                                 id={data.objectid}
                                 name={data.name.text}
-                                image={data.thumbnail ? data.thumbnail : IMAGE_NOT_FOUND}
+                                image={data.image ? data.image : IMAGE_NOT_FOUND}
                                 summary={data.name.text}
+                                yearpublished={data.yearpublished}
+                                rating={data.stats.rating.value}
+                                minpl={data.stats.minplayers}
+                                maxpl={data.stats.maxplayers}
+                                time={data.stats.playingtime}
                             />
                     )} 
-     
-
             </div>;
 };
 

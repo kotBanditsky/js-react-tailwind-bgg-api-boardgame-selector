@@ -39,7 +39,10 @@ const Content = () => {
 
     return (
 
+        <div>
+
         <div className='w-full md:max-w-3xl mx-auto pt-20 justify-center items-center'>
+
             <h1 className='lg:text-9xl md:text-7xl sm:text-5xl text-3xl font-black mb-14'>What to play?</h1>
 
 
@@ -57,10 +60,15 @@ const Content = () => {
                 Check Now
             </button>
 
+        </div>
+        
+        <div className='w-full md:max-w-full mx-auto pt-20 justify-center items-center'>
+
             <div>{renderResults()}</div>
 
         </div>
-     
+
+        </div>
     );
 };
 
