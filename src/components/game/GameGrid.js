@@ -4,7 +4,7 @@ import IMAGE_NOT_FOUND from '../images/not-found.png';
 
 const GameGrid = ( {data} ) => {
     
-    return <div className="grid grid-cols-3 gap-4">
+    return <div className="grid lg:grid-cols-4 sm:grid-cols-1 md:grid-cols-2 gap-2">
                    { data.map( ( data ) =>  
                              <GameCard
                                 key={data.objectid}
