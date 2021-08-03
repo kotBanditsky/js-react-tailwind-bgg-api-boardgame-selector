@@ -12,16 +12,10 @@ const Content = () => {
 
     const onSearch = () => {
         // apiGet(`${input}?own=1`).then(result => {
-        //     setResuts(result);
-        // });
 
         apiGet(input).then(result => {
             setResuts(result);
         });
-
-        // apiGet(`/search/shows?q=${input}`).then(result => {
-        //     setResuts(result);
-        // });
     };
 
     const renderResults = () => {
@@ -41,32 +35,52 @@ const Content = () => {
 
         <div>
 
-        <div className='w-full md:max-w-3xl mx-auto pt-20 justify-center items-center'>
+            <div className='w-full max-w-3xl mx-auto  pt-20 px-10'>
 
-            <h1 className='lg:text-9xl md:text-7xl sm:text-5xl text-3xl font-black mb-14'>What to play?</h1>
+                <h1 className='text-center lg:text-8xl  md:text-7xl sm:text-7xl text-7xl font-black mb-14'>What to play?</h1>
 
 
-            <div class="relative">
-                <span class="absolute inset-y-0 left-0 flex items-center pl-3">
-                    <svg class="w-5 mb-10 h-5 text-gray-400" viewBox="0 0 24 24" fill="none">
-                        <path d="M21 21L15 15M17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                    </svg>
-                </span>
+                <div class="flex space-x-4 justify-between content-center">
 
-                <input type="text" onChange={onInputChange} value={input} class="w-full mb-10 py-3 pl-10 pr-4 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring" placeholder="Search" />
+ 
+                    <input type="text" onChange={onInputChange} value={input} class="w-full border border-gray-300 rounded-full text-center text-gray-600 h-10 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none" placeholder="BoardGameGeek Name" />
+
+                    <select class="border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none ">
+
+                        <option>Players</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                        <option>8</option>
+                        <option>more</option>
+                    </select>
+
+                        
+                </div>
+                
+
+                <div className='flex space-x-4 mt-8 justify-between content-center'>
+                            <button className='py-6 w-full  bg-yellow-500 rounded-full text-3xl hover:bg-yellow-300' onClick={onSearch}>
+                                Random
+                            </button>
+
+                            <button className='py-6  w-full   bg-yellow-500 rounded-full text-3xl hover:bg-yellow-300' onClick={onSearch}>
+                                All
+                            </button>
+                </div>
+
             </div>
-
-            <button className='py-6 px-10 bg-yellow-500 rounded-full text-3xl hover:bg-yellow-300 transition duration-300 ease-in-out flex items-center animate-bounce' onClick={onSearch}>
-                Check Now
-            </button>
-
-        </div>
         
-        <div className='w-full md:max-w-full mx-auto pt-20 justify-center items-center'>
+            <div className='w-full pt-10 '>
 
-            <div>{renderResults()}</div>
+                <div>{renderResults()}</div>
 
-        </div>
+            </div>
+            
 
         </div>
     );

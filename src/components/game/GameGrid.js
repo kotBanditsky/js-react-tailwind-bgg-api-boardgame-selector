@@ -4,8 +4,10 @@ import IMAGE_NOT_FOUND from '../images/not-found.png';
 
 const GameGrid = ( {data} ) => {
     
-    return <div className="grid lg:grid-cols-4 sm:grid-cols-1 md:grid-cols-2 gap-2">
+    return <div className="grid xl:grid-cols-4 lg:grid-cols-3 sm:grid-cols-1 md:grid-cols-2 gap-6 px-10 mb-20">
                    { data.map( ( data ) =>  
+                           { if  (data.status.own != 0) {
+                            return (
                              <GameCard
                                 key={data.objectid}
                                 id={data.objectid}
@@ -18,6 +20,7 @@ const GameGrid = ( {data} ) => {
                                 maxpl={data.stats.maxplayers}
                                 time={data.stats.playingtime}
                             />
+                            )}}
                     )} 
             </div>;
 };
