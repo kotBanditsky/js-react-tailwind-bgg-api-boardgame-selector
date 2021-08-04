@@ -1,10 +1,6 @@
 import React from 'react';
 
-const GameCard = ({ id, image, name, summary, yearpublished, rating, minpl, maxpl, time }) => {
-
-    const summaryAsText = summary
-      ? `${summary.split(' ').slice(0, 10).join(' ').replace(/<.+?>/g, "")}...`
-      : 'No description';
+const GameCard = ({ image, name, yearpublished, rating, minpl, maxpl, time }) => {
   
   return (
 
@@ -32,8 +28,6 @@ const GameCard = ({ id, image, name, summary, yearpublished, rating, minpl, maxp
     </div>
   </div>
   
-
-
     );
   };
 
