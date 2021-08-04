@@ -93,6 +93,10 @@ const Content = () => {
                                 Random
                             </button>
 
+                            <button className='py-6 w-full  bg-yellow-500 rounded-full text-3xl hover:bg-yellow-300' onClick={onSearchRandom}>
+                                Sync
+                            </button>
+
                             <button className='py-6  w-full   bg-yellow-500 rounded-full text-3xl hover:bg-yellow-300' onClick={onSearch}>
                                 All
                             </button>
