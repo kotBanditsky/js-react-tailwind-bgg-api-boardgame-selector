@@ -2,13 +2,10 @@ import bggXmlApiClient from 'bgg-xml-api-client';
 
 export async function apiGet(queryString) {
         const {data} = await bggXmlApiClient.get('collection', { username: queryString }); 
-
         if (data.item === null) {
             
         }
-
         const response = data.item;
-        // eslint-disable-next-line
         const results = response.filter((response) =>  response.status.own != 0);
         return results;    
 }
