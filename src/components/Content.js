@@ -35,7 +35,8 @@ const Content = () => {
         }
     
         if (results && results.length > 0) {
-            const RandomResults = results.filter((results) =>  results.status.own != 0 && results.stats.maxplayers >= players && results.stats.minplayers <= players);
+       //     const RandomResults = results.filter((results) =>  results.status.own != 0 && results.stats.maxplayers >= players && results.stats.minplayers <= players);
+            const RandomResults = results.filter((results) =>  results.status.own != 0);
             const RandomItem = RandomResults[Math.floor(Math.random()*RandomResults.length)];
             console.log(RandomItem);
             setOperation(RandomItem);
@@ -48,7 +49,8 @@ const Content = () => {
         }
     
         if (results && results.length > 0) {
-            const RandomResults = results.filter((results) =>  results.status.own != 0 && results.stats.maxplayers >= players && results.stats.minplayers <= players);
+         //   const RandomResults = results.filter((results) =>  results.status.own != 0 && results.stats.maxplayers >= players && results.stats.minplayers <= players);
+            const RandomResults = results.filter((results) =>  results.status.own != 0);
             console.log(RandomResults);
             setOperation(RandomResults);
         } 
@@ -73,10 +75,14 @@ const Content = () => {
                         name={operation.name.text}
                         image={operation.image ? operation.image : IMAGE_NOT_FOUND}
                         yearpublished={operation.yearpublished}
-                        rating={operation.stats.rating.value}
-                        minpl={operation.stats.minplayers}
-                        maxpl={operation.stats.maxplayers}
-                        time={operation.stats.playingtime}
+                        // rating={operation.stats.rating.value}
+                        // minpl={operation.stats.minplayers}
+                        // maxpl={operation.stats.maxplayers}
+                        // time={operation.stats.playingtime}
+                        rating="X"
+                        minpl="X"
+                        maxpl="X"
+                        time="X"
                     /> 
                     </div></div>
                 );

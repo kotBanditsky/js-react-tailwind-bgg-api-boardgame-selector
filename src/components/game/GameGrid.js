@@ -12,10 +12,14 @@ const GameGrid = ( {data} ) => {
                                 name={data.name.text}
                                 image={data.image ? data.image : IMAGE_NOT_FOUND}
                                 yearpublished={data.yearpublished}
-                                rating={data.stats.rating.value}
-                                minpl={data.stats.minplayers}
-                                maxpl={data.stats.maxplayers}
-                                time={data.stats.playingtime}
+                                // rating={data.stats.rating.value}
+                                // minpl={data.stats.minplayers}
+                                // maxpl={data.stats.maxplayers}
+                                // time={data.stats.playingtime}
+                                rating="X"
+                                minpl="X"
+                                maxpl="X"
+                                time="X"
                             />
                     )} 
             </div>;
