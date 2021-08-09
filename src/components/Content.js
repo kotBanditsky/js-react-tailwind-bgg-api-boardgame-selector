@@ -32,15 +32,22 @@ const Content = () => {
         if (results && results.length === 0) {
             return <div>Not found</div>
         }
-    
+
         if (results && results.length > 0) {
-        //    console.log(results.[0].elements[4]["attributes"].minplayers);
-       //    const RandomResults = results.filter((results) => results.[0].elements[4]["attributes"].maxplayers >= players && results.[0].elements[4]["attributes"].minplayers <= players);
-            const RandomResults = results;
-            console.log(results);
-            console.log(RandomResults.length);
+
+       //     const RandomResults = results.filter(( results) => console.log(results.elements[4]["attributes"].minplayers));
+
+       const RandomResults = results.filter((results) => {
+            if (results.elements[4]["attributes"]) {
+                console.log(results.elements[4]["attributes"].minplayers);
+            }
+        }
+       );
+
+     //       console.log(RandomResults);
+     //       console.log(RandomResults.length);
+
             const RandomItem = RandomResults[Math.floor(Math.random()*RandomResults.length)];
-            console.log(RandomItem);
             setOperation(RandomItem);
         } 
     };
@@ -49,10 +56,9 @@ const Content = () => {
         if (results && results.length === 0) {
             return <div>Not found</div>
         }
-    
+
         if (results && results.length > 0) {
-        //    console.log(results.[0].elements[4]["attributes"].minplayers);
-       //     const RandomResults = results.filter((results) => results[0].elements[4]["attributes"].maxplayers >= players && results[0].elements[4]["attributes"].minplayers <= players);
+         //   const RandomResults = results.filter((results) => (results[0].elements[4]["attributes"].maxplayers >= players) && (results[0].elements[4]["attributes"].minplayers <= players));
             const RandomResults = results;
             setOperation(RandomResults);
         } 
