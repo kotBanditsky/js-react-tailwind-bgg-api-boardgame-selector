@@ -24,7 +24,6 @@ const Content = () => {
     const onSearch = () => {
         apiGet(input).then(result => {
             setResuts(result);
-         //   console.log(result);
             setOperation(result);
         });
     };
@@ -35,10 +34,13 @@ const Content = () => {
         }
     
         if (results && results.length > 0) {
-         //   const RandomResults = results.filter((results) =>  results.elements[0].elements[4].attributes.maxplayers >= players && results.elements[0].elements[4].attributes.minplayers <= players);
-         const RandomResults = results;
+        //    console.log(results.[0].elements[4]["attributes"].minplayers);
+       //    const RandomResults = results.filter((results) => results.[0].elements[4]["attributes"].maxplayers >= players && results.[0].elements[4]["attributes"].minplayers <= players);
+            const RandomResults = results;
+            console.log(results);
+            console.log(RandomResults.length);
             const RandomItem = RandomResults[Math.floor(Math.random()*RandomResults.length)];
-       //     console.log(RandomItem);
+            console.log(RandomItem);
             setOperation(RandomItem);
         } 
     };
@@ -49,7 +51,8 @@ const Content = () => {
         }
     
         if (results && results.length > 0) {
-        //    const RandomResults = results.filter((results) => results.elements[0].elements[4].attributes.maxplayers >= players && results.elements[0].elements[4].attributes.minplayers <= players);
+        //    console.log(results.[0].elements[4]["attributes"].minplayers);
+       //     const RandomResults = results.filter((results) => results[0].elements[4]["attributes"].maxplayers >= players && results[0].elements[4]["attributes"].minplayers <= players);
             const RandomResults = results;
             setOperation(RandomResults);
         } 
@@ -61,32 +64,29 @@ const Content = () => {
             }
         
             if (operation && operation.length > 0) {
-     //           console.log(operation.length);
-          //      console.log(operation.[0].elements[4].elements[0]["attributes"].value);
                 return (
                     <GameGrid data = {operation} />
                 );
             } 
             
-            // if (typeof operation === 'object' && operation != null) {
-            //     return ( 
-            //         <div className='mb-20 px-3 flex justify-center items-center'>
-            //             <div className="w-96 lg:w-96 sm:w-auto md:w-auto">
+            if (typeof operation === 'object' && operation != null) {
+                return ( 
+                    <div className='mb-20 px-3 flex justify-center items-center'>
+                        <div className="w-96 lg:w-96 sm:w-auto md:w-auto">
 
-            //             {/* <GameGrid data = {operation} /> */}
-
-            //         <GameCard 
-            //                     name={results.elements[0].elements[0].elements[0].text}
-            //                     image={results.elements[0].elements[2].elements[0].text ? results.elements[0].elements[2].elements[0].text : IMAGE_NOT_FOUND}
-            //                     yearpublished={results.elements[0].elements[1].elements[0].text}
-            //                     rating={results.elements[0].elements[4].elements[0].attributes.value}
-            //                     minpl={results.elements[0].elements[4].attributes.minplayers}
-            //                     maxpl={results.elements[0].elements[4].attributes.maxplayers}
-            //                     time={results.elements[0].elements[4].attributes.playingtime}
-            //         />  
-            //         </div></div>
-            //     );
-            // }
+                    <GameCard 
+                                name={operation.elements[0].elements[0].text}
+                                image={operation.elements[2].elements[0].text ? operation.elements[2].elements[0].text : IMAGE_NOT_FOUND}
+                                yearpublished={operation.elements[1].elements[0].text}
+                                rating={operation.elements[4].elements[0]["attributes"].value}
+                                minpl={operation.elements[4]["attributes"].minplayers}
+                                maxpl={operation.elements[4]["attributes"].maxplayers}
+                                time={operation.elements[4]["attributes"].playingtime}
+                    />  
+                    </div>
+                    </div>
+                );
+            }
             return null;
     };
 
