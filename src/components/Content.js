@@ -35,17 +35,11 @@ const Content = () => {
 
         if (results && results.length > 0) {
 
-       //     const RandomResults = results.filter(( results) => console.log(results.elements[4]["attributes"].minplayers));
+      //      const RandomResults = results.filter(( results) => results.elements[3]["attributes"].minplayers >= players && results.elements[3]["attributes"].maxplayers <= players);
+      console.log(results);
+      const RandomResults = results.filter((results) => console.log(results.elements[4].elements["minplayers"]) > players);
 
-       const RandomResults = results.filter((results) => {
-            if (results.elements[4]["attributes"]) {
-                console.log(results.elements[4]["attributes"].minplayers);
-            }
-        }
-       );
-
-     //       console.log(RandomResults);
-     //       console.log(RandomResults.length);
+    //        console.log(RandomResults.length);
 
             const RandomItem = RandomResults[Math.floor(Math.random()*RandomResults.length)];
             setOperation(RandomItem);

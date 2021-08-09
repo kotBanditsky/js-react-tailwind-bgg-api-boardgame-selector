@@ -12,7 +12,7 @@ await fetch('https://www.boardgamegeek.com/xmlapi/collection/kotbanditsky?own=1'
 
 const results = dataparser.elements[0].elements;
 
-  console.log(results);
+//  console.log(results);
 //  console.log(results.[0].elements[4]["attributes"].minplayers);
 
 return results;  
