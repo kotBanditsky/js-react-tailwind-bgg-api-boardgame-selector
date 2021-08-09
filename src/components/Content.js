@@ -35,9 +35,10 @@ const Content = () => {
         }
     
         if (results && results.length > 0) {
-            const RandomResults = results.filter((results) =>  results.elements[0].elements[4].attributes.maxplayers >= players && results.elements[0].elements[4].attributes.minplayers <= players);
+         //   const RandomResults = results.filter((results) =>  results.elements[0].elements[4].attributes.maxplayers >= players && results.elements[0].elements[4].attributes.minplayers <= players);
+         const RandomResults = results;
             const RandomItem = RandomResults[Math.floor(Math.random()*RandomResults.length)];
-            console.log(RandomItem);
+       //     console.log(RandomItem);
             setOperation(RandomItem);
         } 
     };
@@ -48,7 +49,8 @@ const Content = () => {
         }
     
         if (results && results.length > 0) {
-            const RandomResults = results.filter((results) => results.elements[0].elements[4].attributes.maxplayers >= players && results.elements[0].elements[4].attributes.minplayers <= players);
+        //    const RandomResults = results.filter((results) => results.elements[0].elements[4].attributes.maxplayers >= players && results.elements[0].elements[4].attributes.minplayers <= players);
+            const RandomResults = results;
             setOperation(RandomResults);
         } 
     };
@@ -59,6 +61,8 @@ const Content = () => {
             }
         
             if (operation && operation.length > 0) {
+     //           console.log(operation.length);
+          //      console.log(operation.[0].elements[4].elements[0]["attributes"].value);
                 return (
                     <GameGrid data = {operation} />
                 );
