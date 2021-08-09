@@ -8,18 +8,13 @@ const GameGrid = ( {data} ) => {
                    { data.map( ( data ) =>  
                              <GameCard
                                 key={data.objectid}
-                                id={data.objectid}
-                                name={data.name.text}
-                                image={data.image ? data.image : IMAGE_NOT_FOUND}
-                                yearpublished={data.yearpublished}
-                                // rating={data.stats.rating.value}
-                                // minpl={data.stats.minplayers}
-                                // maxpl={data.stats.maxplayers}
-                                // time={data.stats.playingtime}
-                                rating="X"
-                                minpl="X"
-                                maxpl="X"
-                                time="X"
+                                name={data.elements[0].elements[0].text}
+                                image={data.elements[2].elements[0].text ? data.elements[2].elements[0].text : IMAGE_NOT_FOUND}
+                                yearpublished={data.elements[1].elements[0].text}
+                                rating={data.elements[0].attributes.value}
+                                minpl={data.elements[0].attributes.minplayers}
+                                maxpl={data.elements[0].attributes.maxplayers}
+                                time={data.elements[0].attributes.playingtime}
                             />
                     )} 
             </div>;
