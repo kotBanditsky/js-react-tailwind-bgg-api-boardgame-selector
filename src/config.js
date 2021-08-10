@@ -2,19 +2,20 @@
 export async function apiGet(queryString) {
 
 const convert = require('xml-js');
+
+var options = { compact: true };
+
 let dataparser;
 
-await fetch('https://www.boardgamegeek.com/xmlapi/collection/kotbanditsky?own=1')
+await fetch(`https://www.boardgamegeek.com/xmlapi/collection/${queryString}?own=1'`)
             .then(response => response.text())
             .then(str => {
-                dataparser = JSON.parse(convert.xml2json(str))
+                dataparser = JSON.parse(convert.xml2json(str,options))
 });
 
-const results = dataparser.elements[0].elements;
-
-//  console.log(results);
-//  console.log(results.[0].elements[4]["attributes"].minplayers);
+const results = dataparser.items.item;
 
 return results;  
+
 }
     

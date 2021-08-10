@@ -9,6 +9,8 @@ const Content = () => {
     const [players, setPlayers] = useState(2);
     const [results, setResuts] = useState(null);
     const [operation, setOperation] = useState(null);
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState();
 
     const onInputChange = (ev) => {
         setInput(ev.target.value);
@@ -22,25 +24,26 @@ const Content = () => {
     }
  
     const onSearch = () => {
+        setError(0);
+        setLoading(true);
         apiGet(input).then(result => {
             setResuts(result);
             setOperation(result);
-        });
+        }).catch((err) => {
+            setError(1);
+        }).finally(() => {
+            setLoading(false);
+        });;
     };
 
     const onSearchRandom = () => {
+
         if (results && results.length === 0) {
             return <div>Not found</div>
         }
 
         if (results && results.length > 0) {
-
-      //      const RandomResults = results.filter(( results) => results.elements[3]["attributes"].minplayers >= players && results.elements[3]["attributes"].maxplayers <= players);
-      console.log(results);
-      const RandomResults = results.filter((results) => console.log(results.elements[4].elements["minplayers"]) > players);
-
-    //        console.log(RandomResults.length);
-
+            const RandomResults = results.filter((results) => results.stats._attributes.maxplayers >= players && results.stats._attributes.minplayers <= players);
             const RandomItem = RandomResults[Math.floor(Math.random()*RandomResults.length)];
             setOperation(RandomItem);
         } 
@@ -52,36 +55,42 @@ const Content = () => {
         }
 
         if (results && results.length > 0) {
-         //   const RandomResults = results.filter((results) => (results[0].elements[4]["attributes"].maxplayers >= players) && (results[0].elements[4]["attributes"].minplayers <= players));
-            const RandomResults = results;
+            const RandomResults = results.filter((results) => results.stats._attributes.maxplayers >= players && results.stats._attributes.minplayers <= players);
             setOperation(RandomResults);
         } 
     };
 
     const renderResults = () => {
         if (operation && operation.length === 0) {
-                return <div>Not found</div>
-            }
+                return <div className='mb-20 px-3 flex justify-center items-center'>Not found</div>
+        }
+
+        if (loading) {
+                
+                return <div className='mb-20 px-3 flex justify-center items-center'>Data is loading...</div>;
+        }
         
-            if (operation && operation.length > 0) {
+        if (error === 1) {
+            return <div className='mb-20 px-3 flex justify-center items-center'>There was an error loading your BGG profile!</div>;
+        } else if (operation && operation.length > 0) {
                 return (
                     <GameGrid data = {operation} />
                 );
-            } 
+        } 
             
-            if (typeof operation === 'object' && operation != null) {
+        if (typeof operation === 'object' && operation != null) {
                 return ( 
                     <div className='mb-20 px-3 flex justify-center items-center'>
                         <div className="w-96 lg:w-96 sm:w-auto md:w-auto">
 
                     <GameCard 
-                                name={operation.elements[0].elements[0].text}
-                                image={operation.elements[2].elements[0].text ? operation.elements[2].elements[0].text : IMAGE_NOT_FOUND}
-                                yearpublished={operation.elements[1].elements[0].text}
-                                rating={operation.elements[4].elements[0]["attributes"].value}
-                                minpl={operation.elements[4]["attributes"].minplayers}
-                                maxpl={operation.elements[4]["attributes"].maxplayers}
-                                time={operation.elements[4]["attributes"].playingtime}
+                                name={operation.name._text}
+                                image={operation.image ? operation.image._text : IMAGE_NOT_FOUND}
+                                yearpublished={operation.yearpublished._text} 
+                                rating={operation.stats.rating._attributes.value}
+                                minpl={operation.stats._attributes.minplayers}
+                                maxpl={operation.stats._attributes.maxplayers}
+                                time={operation.stats._attributes.playingtime}
                     />  
                     </div>
                     </div>
